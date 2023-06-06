@@ -1,7 +1,10 @@
+        import React from "react"
+        import ReactDOM from "react-dom/client"
+
         const heading = React.createElement('h1',{
             id:'rooting', 
-            className: 'ivhs'
-        },'Vishwajeet from react')
+            className: 'vish'
+        },'Vishwajeet from react parcel is cool')
 
         const heading2 = React.createElement('h2', {
             id: 'heading2'
