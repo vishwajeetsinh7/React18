@@ -1,0 +1,35 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "learning basics of react",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishwajeetsinh7/React18.git"
+  },
+  "keywords": [
+    "react",
+    "react18",
+    "as"
+  ],
+  "author": "Vishwajeetsinh Rathod",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vishwajeetsinh7/React18/issues"
+  },
+  "homepage": "https://github.com/vishwajeetsinh7/React18#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "parcel": "^2.9.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

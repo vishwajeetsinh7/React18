@@ -1,18 +1,34 @@
-        const heading = React.createElement('h1',{
-            id:'rooting', 
-            className: 'ivhs'
-        },'Vishwajeet from react')
+        import React from "react"
+        import ReactDOM from "react-dom/client"
 
-        const heading2 = React.createElement('h2', {
-            id: 'heading2'
-        },
-        'This is heading 2')
+        const Title = () => (
+        <h1 id="name" key="naming">
+            vishwajeet
+        </h1>
+        );
+        
+        //! Components 
+        
+        let xyz = 1
+        /* way one of writing react component */
+        const HeaderComponenet = () => { 
+            return (
+                <div>
+                    <Title/>
+                    <Title/>
+                </div>
+            );
+        };
 
-        const container = React.createElement('div', {
-            id: 'container'
-        },
-        [heading, heading2])
-        console.log(heading)
+        /* Way two of writing react component*/
+            const HeaderComponenet2 = () => (
+                    <div>
+                        <Title/>                   
+                    </div>
+                );
+        
+
         const root = ReactDOM.createRoot(document.getElementById('root'))
+
         //passing a react element inside the root. 
-        root.render(container)
+        root.render(<HeaderComponenet/>)
