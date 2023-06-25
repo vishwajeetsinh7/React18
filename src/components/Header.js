@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import logo from '../../logo.png'
 
 const Title = () => (
-    <a href="/">
+  <a href="/">
+ 
         <img
         src={logo}
         width="100px"
@@ -9,9 +11,14 @@ const Title = () => (
         />
     </a>
   );
+
+
+
+
   
   /* Way two of writing react component*/
-  const Header = () => (
+
+  const Header = () => (    
     <div className="header">
       <Title />
       <div className="nav-items">
