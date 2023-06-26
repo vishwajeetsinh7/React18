@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import logo from '../../logo.png'
 
+const loggedInUser = () => { 
+  return false
+}
+
 const Title = () => (
   <a href="/">
  
@@ -18,19 +22,30 @@ const Title = () => (
   
   /* Way two of writing react component*/
 
-  const Header = () => (    
-    <div className="header">
-      <Title />
-      <div className="nav-items">
-          <ul>
-              <li>Home</li>
-              <li>About Us</li>
-              <li>Contact</li>
-              <li>Cart</li>
-          </ul>
+  const Header = () => { 
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    return    (    
+      <div className="header">
+        <Title />
+        <div className="nav-items">
+            <ul>
+                <li>Home</li>
+                <li>About Us</li>
+                <li>Contact</li>
+                <li>Cart</li>
+            </ul>
+        </div>
+        { 
+        isLoggedIn?<button onClick={() => setIsLoggedIn(false)}>Out</button> : <button onClick={
+          () => setIsLoggedIn(true)
+        }>Login</button>
+        }
+        
+        
       </div>
-    </div>
-  );
+    )
+  }
+
 
 
   export default Header
