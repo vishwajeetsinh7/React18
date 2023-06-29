@@ -1,20 +1,21 @@
   import { useEffect, useState } from 'react';
   import logo from '../assets/img/logo.png'
+  import { Link } from 'react-router-dom';
 
   const loggedInUser = () => { 
     return false
   }
 
   const Title = () => (
-    <a href="/">
-  
-          <img
+      <Link to="/">
+      <img
           src={logo}
           width="100px"
           alt="loogo"
           />
-      </a>
-    );
+
+      </Link>
+      );
 
 
 
@@ -31,8 +32,12 @@
           <Title />
           <div className="nav-items">
               <ul>
-                  <li>Home</li>
-                  <li>About Us</li>
+                  <li>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">About</Link>
+                  </li>
                   <li>Contact</li>
                   <li>Cart</li>
               </ul>
