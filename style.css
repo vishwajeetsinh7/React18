@@ -20,8 +20,17 @@
     padding: 10px;
     margin: 10px;
 }
-.restaurant-list{ 
+.restaurant-list, .shimmer-restaurant-list{ 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.shimmer-card { 
+    width: 200px;
+    aspect-ratio: 1;
+    background-color: lightgrey;
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 10px;
 }

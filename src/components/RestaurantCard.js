@@ -1,9 +1,11 @@
+import { resImage } from "../config";
+
 const RestrauntCard = (restraunt) => {
   const { name, cuisines, cloudinaryImageId, avgRating } = restraunt.restraunt;
   return (
     <div className="card">
       <img
-        src={`https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/${cloudinaryImageId}`}
+        src={`${resImage}/${cloudinaryImageId}`}
         width="100%"
       />
       <h2>{name}</h2>

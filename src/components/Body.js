@@ -1,18 +1,47 @@
 import RestrauntCard from "./RestaurantCard";
-import { restaurantList } from "../config";
-import { useState } from "react";
+// import { restaurantList } from "../config";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 function filterSearch(list, searchText) {
-  return list.filter((card) => card.data.name.includes(searchText));
+  return list.filter((card) => card.data.name.toLowerCase()?.includes(searchText?.toLowerCase()));
 }
 
 const Body = () => {
+  const [allRestaurants, setAllResturants] = useState([])
+  const [filterdRestraunts, setFilteredRestraunts] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [restraunts, setRestraunts] = useState(restaurantList);
+  
+  // useEffect is callback function 
+  /* this meanns it's not called immediatley it's calle whenever
+  useeffect wants it's to call */
 
-  return (
+  useEffect(() => { 
+    // console.log('useEfx')
+    getRestaurants()
+  }, [])
+  // console.log('rdr')
+
+  async function getRestaurants(){ 
+    const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.022505&lng=72.5713621&page_type=DESKTOP_WEB_LISTING')
+    const json = await data.json()
+    setAllResturants(json?.data?.cards[2]?.data?.data?.cards)
+    setFilteredRestraunts(json?.data?.cards[2]?.data?.data?.cards)
+  }
+
+  /* //! CONDITIONAL RENDREING
+      IF RESTRORANT IS IS EMPTY ==> sHIMMER UI
+      IF RESTRO HAS DATA THEN LOAD ACTUAL DATA UI
+  */
+
+  //todo not return component (EearlY Return )
+  if(!allRestaurants) return null
+  if((filterdRestraunts.length === 0 ) && (allRestaurants?.length !== 0)) return <h1>Not Restru Match your Resutl</h1>
+
+  return (allRestaurants?.length === 0)? <Shimmer/> :  (
     <div>
-      <div className="search-bar">
+        <div className="search-bar">
         <input
           type="text"
           placeholder="Search"
@@ -23,17 +52,17 @@ const Body = () => {
         />
         <button
           onClick={(e) => {
-            const filterData = filterSearch(restaurantList, searchInput);
-            setRestraunts(filterData);
+            const filterData = filterSearch(allRestaurants, searchInput);
+            setFilteredRestraunts(filterData);
           }}
         >
           Search
         </button>
       </div>
       <div className="restaurant-list">
-        {restraunts.map((restraunt) => {
+        {filterdRestraunts.map((restraunt) => {
           return (
-            <RestrauntCard restraunt={restraunt.data} key={restraunt.data.id} />
+            <Link to={"/restaurant/"+ restraunt.data.id} key={restraunt.data.id}> <RestrauntCard restraunt={restraunt.data}  /> </Link>
           );
         })}
       </div>
