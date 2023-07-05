@@ -11,7 +11,6 @@ const About2 = () => {
       <h1>About us</h1>
       <p>we are online service providing </p>
       <ProfileFunction name={"vishFunction"} number="1" />
-      <ProfileClass name={"Vishclass"} number="3" />
     </>
   );
 };
@@ -21,21 +20,22 @@ const About2 = () => {
 class About extends Component {
   constructor(props) {
     super(props);
-    console.log("1. parent constructor");
+    // console.log("1. parent constructor");
   }
 
   componentDidMount() {
-    console.log("2. parent component didMount");
+    // console.log("2. parent component didMount");
   }
 
   render() {
-    console.log("3. parent render");
+    // console.log("3. parent render");
     return (
       <>
         <h1>About us</h1>
         <p>we are online service providing </p>
         <ProfileFunction name={"vishFunction"} number="1" />
-        <ProfileClass name={"Vishclass"} number="3" />
+
+        <ProfileClass name={"Vishclass222"} number="child-2" />
       </>
     );
   }
