@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProfileFunction = (props) => {
   const [count, setCount] = useState(2);
+
   return (
     <div>
       <h1>this is functionals component</h1>
