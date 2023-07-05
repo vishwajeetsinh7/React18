@@ -1,0 +1,7 @@
+{
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorStyle": "line",
+    "editor.cursorSurroundingLines": 0,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+}

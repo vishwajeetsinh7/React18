@@ -4,7 +4,7 @@
   "description": "learning basics of react",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build  index.html --public-url ./",
     "test": "jest"
   },
   "repository": {
