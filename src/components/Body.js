@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterSearch } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [allRestaurants, setAllResturants] = useState([]);
@@ -27,6 +28,11 @@ const Body = () => {
     const json = await data.json();
     setAllResturants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestraunts(json?.data?.cards[2]?.data?.data?.cards);
+  }
+
+  const isOnline = useOnline();
+  if (!isOnline) {
+    return <h1>Pleaase check your InterNet connection</h1>;
   }
 
   /* //! CONDITIONAL RENDREING
