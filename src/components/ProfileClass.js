@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../utils/UserContext";
 
 class ProfileClass extends React.Component {
   constructor(props) {
@@ -49,6 +50,9 @@ class ProfileClass extends React.Component {
         >
           ClassbaswedCompinbe
         </button>
+        <UserContext.Consumer>
+          {({ user }) => <h1 className="text-3xl bg-red-600">{user.name}</h1>}
+        </UserContext.Consumer>
       </div>
     );
   }

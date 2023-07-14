@@ -1,15 +1,17 @@
 import RestrauntCard from "./RestaurantCard";
 // import { restaurantList } from "../config";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterSearch } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext.js";
 
 const Body = () => {
   const [allRestaurants, setAllResturants] = useState([]);
   const [filterdRestraunts, setFilteredRestraunts] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const { user, setUser } = useContext(UserContext);
 
   // useEffect is callback function
   /* this meanns it's not called immediatley it's calle whenever
@@ -68,6 +70,15 @@ const Body = () => {
         >
           Search
         </button>
+        <input
+          value={user.name}
+          onChange={(e) =>
+            setUser({
+              name: e.target.value,
+              email: "newname@gmail.com",
+            })
+          }
+        />
       </div>
       <div className="flex flex-wrap w-full max-w-7xl m-auto">
         {filterdRestraunts.map((restraunt) => {
@@ -76,7 +87,6 @@ const Body = () => {
               to={"/restaurant/" + restraunt.data.id}
               key={restraunt.data.id}
             >
-              {" "}
               <RestrauntCard restraunt={restraunt.data} />{" "}
             </Link>
           );
