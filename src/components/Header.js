@@ -3,6 +3,7 @@ import logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const loggedInUser = () => {
   return false;
@@ -19,6 +20,8 @@ const Title = () => (
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isOnline = useOnline();
+  const cartItem = useSelector((store) => store.cart.items);
+  console.log(cartItem);
 
   const { user } = useContext(UserContext);
 
@@ -48,12 +51,12 @@ const Header = () => {
               Instamart
             </Link>
           </li>
-          <li className="px-3">Cart</li>
+          <Link to="/cart">
+            <li className="px-3">Cart -{cartItem.length} Items</li>
+          </Link>
         </ul>
       </div>
-      <div className="font-bold text-cyan-700 p-3 bg-yellow-50">
-        Hell'0 {user.name}
-      </div>
+
       <h1>{isOnline ? "✅" : "❌"}</h1>
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Out</button>
