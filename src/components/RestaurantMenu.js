@@ -2,25 +2,24 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { resImage } from "../config";
 import Shimmer from "../components/Shimmer";
+import useRestaraunt from "../utils/useRestaraunt";
+
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
+
+// useRestaraunt();
 
 const RestaurantMenu = () => {
   const params = useParams();
   const { id } = useParams();
-  console.log(id);
+  const restaurant = useRestaraunt(id);
+  // console.log(restaurant);
 
-  const [restaurant, setRestaurant] = useState(null);
-  useEffect(() => {
-    getRestaurantInfo();
-  }, []);
+  const dispatch = useDispatch();
 
-  async function getRestaurantInfo() {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.022505&lng=72.5713621&restaurantId=${id}`
-    );
-    const json = await data.json();
-    console.log(json.data.cards[0]?.card?.card.info);
-    setRestaurant(json.data.cards[0]?.card?.card.info);
-  }
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return !restaurant ? (
     <Shimmer />
@@ -40,6 +39,14 @@ const RestaurantMenu = () => {
 
       <div>
         <h1>Menus</h1>
+      </div>
+      <div className="btn">
+        <button
+          className="p-3 m-2 bg-green-500"
+          onClick={() => handleAddItem(restaurant)}
+        >
+          AddToCart
+        </button>
       </div>
     </div>
   );
