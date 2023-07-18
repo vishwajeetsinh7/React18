@@ -18,6 +18,9 @@ import UserContext from "./utils/UserContext";
 const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./components/About"));
 
+import { Provider } from "react-redux";
+import store from "./utils/Store";
+
 const AppLayout = () => {
   const [user, setUser] = useState({
     name: "viswajeetrathod",
@@ -29,7 +32,7 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <>
+    <Provider store={store}>
       <UserContext.Provider
         value={{
           user: user,
@@ -40,7 +43,7 @@ const AppLayout = () => {
         <Outlet />
         <Footer />
       </UserContext.Provider>
-    </>
+    </Provider>
   );
 };
 
