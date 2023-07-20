@@ -53,6 +53,7 @@ const Body = () => {
     <div>
       <div className="p-5 bg-pink-50">
         <input
+          data-testid="search-input"
           className="p-2 border-2 rounded-md border-purple-300 focus:bg-cyan-50"
           type="text"
           placeholder="Search"
@@ -67,6 +68,7 @@ const Body = () => {
             const filterData = filterSearch(allRestaurants, searchInput);
             setFilteredRestraunts(filterData);
           }}
+          data-testid="search-btn"
         >
           Search
         </button>
@@ -80,7 +82,10 @@ const Body = () => {
           }
         />
       </div>
-      <div className="flex flex-wrap w-full max-w-7xl m-auto">
+      <div
+        className="flex flex-wrap w-full max-w-7xl m-auto"
+        data-testid="res-list"
+      >
         {filterdRestraunts.map((restraunt) => {
           return (
             <Link

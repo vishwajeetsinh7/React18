@@ -29,7 +29,7 @@ const RestaurantMenu = () => {
       <h2>Name</h2>
       <h2>{restaurant.name}</h2>
       <img src={`${resImage}/${restaurant.cloudinaryImageId}`} />
-      <ul>
+      <ul data-testid="menu">
         <li>{restaurant?.areaName}</li>
         <li>{restaurant.city}</li>
         <li>{restaurant.avgrating} Stars</li>
@@ -44,6 +44,7 @@ const RestaurantMenu = () => {
         <button
           className="p-3 m-2 bg-green-500"
           onClick={() => handleAddItem(restaurant)}
+          data-testid="addtocart"
         >
           AddToCart
         </button>

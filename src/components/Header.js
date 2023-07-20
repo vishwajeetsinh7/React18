@@ -11,7 +11,13 @@ const loggedInUser = () => {
 
 const Title = () => (
   <Link to="/">
-    <img src={logo} width="100px" alt="loogo" className="w-44 px-2" />
+    <img
+      data-testid="logo"
+      src={logo}
+      width="100px"
+      alt="loogo"
+      className="w-44 px-2"
+    />
   </Link>
 );
 
@@ -52,12 +58,14 @@ const Header = () => {
             </Link>
           </li>
           <Link to="/cart">
-            <li className="px-3">Cart -{cartItem.length} Items</li>
+            <li className="px-3">
+              Cart -<span data-testid="cart">{cartItem.length}</span> Items
+            </li>
           </Link>
         </ul>
       </div>
 
-      <h1>{isOnline ? "✅" : "❌"}</h1>
+      <h1 data-testid="online-status">{isOnline ? "✅" : "❌"}</h1>
       {isLoggedIn ? (
         <button onClick={() => setIsLoggedIn(false)}>Out</button>
       ) : (
